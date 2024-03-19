@@ -6,7 +6,10 @@ bcftools view -s F_Ghana_WZ_BJE4687_combined__sorted.bam,F_IvoryCoast_xen228_com
 ```
 grep -vwE "./." test_filtered.vcf.gz > test_filtered_no_empty.vcf.gz
 ```
-
+```
+module load StdEnv/2020 vcftools/0.1.16
+zcat test_filtered_no_empty.vcf.gz | vcf-to-tab > out.tab
+```
 ```
 grenedalf/bin/grenedalf frequency --vcf-path 2023_XT_combineGVCF_files/combined_Chr1.g.vcf.gz --write-sample-counts --allow-file-overwriting
 ```
