@@ -41,6 +41,6 @@ echo "$samp_1_col_no,$samp_2_col_no,$samp_3_col_no" | cut -f 1,2,3 $i > ../"${sa
 # Then remove all ./. sites. Run this inside the directory with previously filtered tab files
 ```
 mkdir no_empty
-for i in *tab_selected_samples.tab;grep -vwE "./." ${i} > no_empty/${i}_no_empty.tab;done
+for i in *tab_selected_samples.tab; do grep -vwE "./." ${i} > no_empty/${i}_no_empty.tab;done
 
 ```
