@@ -1,21 +1,8 @@
-# pop_comp_grenedalf
+# Population comparison 2 - using bash first to make it more efficient
 
-```
-bcftools view -s F_Ghana_WZ_BJE4687_combined__sorted.bam,F_IvoryCoast_xen228_combined__sorted.bam,F_Nigeria_EUA0331_combined__sorted.bam combined_Chr10.g.vcf.gz > test_filtered.vcf
-```
+This starts by converting vcf files to tab files as in "https://github.com/TharinduTS/Comparing_populations"
 
-```
-gzip test_filtered.vcf
-module load StdEnv/2020 vcftools/0.1.16
-zcat test_filtered.vcf.gz | vcf-to-tab > out.tab
-```
-```
-grep -vwE "./." out.tab > out_no_empty.vcf
-```
-
-```
-grenedalf/bin/grenedalf frequency --vcf-path 2023_XT_combineGVCF_files/combined_Chr1.g.vcf.gz --write-sample-counts --allow-file-overwriting
-```
+also it uses a slightly altered python script from that github page (which is included at the end of this page)
 
 # from tab files
 
@@ -41,9 +28,14 @@ echo $samp_1_col_no,$samp_2_col_no,$samp_3_col_no
 ```
 for i in *vcf.gz.tab; do cut -f 1,2,3,4,21,22 $i > ../"${samp_name_1}${samp_name_2}${samp_name_3}_selected_samples"/${i}_selected_samples.tab;done
 ```
-# Then remove all ./. sites. Run this inside the directory with previously filtered tab files
+Then remove all ./. sites. Run this inside the directory with previously filtered tab files
 ```
 mkdir no_empty
 for i in *tab_selected_samples.tab; do grep -vwE "./." ${i} > no_empty/${i}_no_empty.tab;done
 
 ```
+
+Copy this python script to the main directory for NOVOPlasty
+
+
+```python
