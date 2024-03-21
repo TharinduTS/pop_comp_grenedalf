@@ -38,8 +38,9 @@ samp_3_col_no=$(head -1 combined_Chr10.g.vcf.gz_Chr10_GenotypedSNPs.vcf.gz_filte
 # Include columns 1,2 and 3 as mandatory because they are needed info columns, not samples
 echo "$samp_1_col_no,$samp_2_col_no,$samp_3_col_no" | cut -f 1,2,3 $i > ../"${samp_name_1}${samp_name_2}${samp_name_3}_selected_samples"/${i}_selected_samples.tab;done
 ```
-
+# Then remove all ./. sites. Run this inside the directory with previously filtered tab files
 ```
-grep -vwE "./." Chr10_selected_file.txt > selected_file.txt_no_empty.tab
+mkdir no_empty
+for i in *tab_selected_samples.tab;grep -vwE "./." ${i} > no_empty/${i}_no_empty.tab;done
 
 ```
