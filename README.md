@@ -34,8 +34,11 @@ mkdir no_empty
 for i in *tab_selected_samples.tab; do grep -vwE "./." ${i} > no_empty/${i}_no_empty.tab;done
 
 ```
+To make it clean,
 
-Copy this python script to the main directory for NOVOPlasty
+copy all of the following in to a seperate directory
+# 1. All the tab files after removing deletions (xx_no_empty.tab)
+# 2. python script - ****MUST EDIT WORKING DIRECTORY in the script****
 
 compare_populations.py
 ```python
@@ -470,14 +473,21 @@ f.write('no particular connection was found in rest')
 f.write('\n\n***************************\n')
 f.close()
 ```
-Then run it like this
+# 3. my_sample_list_with_sex_and_pop.txt
+
+```vi
+F_Ghana_WZ_BJE4687_combined__sorted.bam F       Tropicalis
+all_ROM19161_sorted.bam F       Liberia
+all_calcaratus_sorted.bam       F       Calcaratus
+```
+# 4. sbatch script to run python script
 ```bash
 #!/bin/sh
-#SBATCH --job-name=bwa_505
+#SBATCH --job-name=compare_pop
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=8:00:00
-#SBATCH --mem=6gb
+#SBATCH --time=72:00:00
+#SBATCH --mem=32gb
 #SBATCH --output=comp_pop.%J.out
 #SBATCH --error=comp_pop.%J.err
 #SBATCH --account=def-ben
@@ -496,5 +506,5 @@ source ~/ENV/bin/activate
 pip install --no-index --upgrade pip
 pip install pandas --no-index
 
-python3 compare_populations.py /scratch/premacht/python_projects_2023/filtering_first/F_Ghana_WZ_BJE4687_combined__sorted.bamall_ROM19161_sorted.bamall_calcaratus_sorted.bam_selected_samples/no_empty/combined_Chr${SLURM_ARRAY_TASK_ID}.g.vcf.gz_Chr1_GenotypedSNPs.vcf.gz_filtered.vcf.gz_selected.vcf.gz.tab_selected_samples.tab_no_empty.tab my_sample_list_with_sex_and_pop.txt Tropicalis Liberia Calcaratus
+python3 compare_populations.py combined_Chr${SLURM_ARRAY_TASK_ID}.g.vcf.gz_Chr1_GenotypedSNPs.vcf.gz_filtered.vcf.gz_selected.vcf.gz.tab_selected_samples.tab_no_empty.tab my_sample_list_with_sex_and_pop.txt Tropicalis Liberia Calcaratus
 ```
