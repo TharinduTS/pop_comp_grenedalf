@@ -506,7 +506,7 @@ source ~/ENV/bin/activate
 pip install --no-index --upgrade pip
 pip install pandas --no-index
 
-python3 compare_populations.py combined_Chr${SLURM_ARRAY_TASK_ID}.g.vcf.gz_Chr1_GenotypedSNPs.vcf.gz_filtered.vcf.gz_selected.vcf.gz.tab_selected_samples.tab_no_empty.tab my_sample_list_with_sex_and_pop.txt Tropicalis Liberia Calcaratus
+python3 compare_populations.py combined_Chr${SLURM_ARRAY_TASK_ID}.g.vcf.gz_Chr${SLURM_ARRAY_TASK_ID}_GenotypedSNPs.vcf.gz_filtered.vcf.gz_selected.vcf.gz.tab_selected_samples.tab_no_empty.tab my_sample_list_with_sex_and_pop.txt Tropicalis Liberia Calcaratus
 ```
 Then run it
 
