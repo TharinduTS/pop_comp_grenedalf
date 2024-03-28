@@ -526,8 +526,8 @@ Then paste those values in a excel sheet as a table for further analysis.
 when you paste data, it will be pasted in a single column. Use data to columns to seperate them
 
 example excel sheet
-'''excel
+
 ![image](https://github.com/TharinduTS/pop_comp_grenedalf/assets/57451846/ea4b7c16-d0de-4cec-9402-40ed8224b2b8)
-```
+
 
 
