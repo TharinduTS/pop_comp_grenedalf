@@ -513,3 +513,35 @@ Then run it
 ```bash
 sbatch run_comparisons.sh
 ```
+This will create seperate directories for results of each chromosome. Inside that you can find files for each different combination and a file named final_summary.txt with summary for each of the chromosome.
+
+Now we have to sum up results for all the chromosomes
+
+you can create a summary file from all the different chrs 1:10 by running following command(after editing appropriately) in the directory with different directories for different chrs
+```bash
+ for i in {1..10} ; do echo $(tr ' ' '\n' <pop_comparisons_combined_Chr${i}.g.vcf.gz_Chr${i}_GenotypedSNPs.vcf.gz_filtered.vcf.gz_selected.vcf.gz.tab_selected_samples.tab_no_empty.tab_Tropicalis_Liberia_Calcaratus/final_summary.txt| grep -E '[0-9\.]+')>>chr_sum.txt;done
+```
+Then paste those values in a excel sheet as a table for further analysis.
+
+when you paste data, it will be pasted in a single column. Use data to columns to seperate them
+
+example excel sheet
+'''excel
+samples used	BJE4687,ROM19161,calcaratus			
+	Tropicalis was close to Liberia in	Tropicalis was close to Calcaratus	Liberia was close to Calcaratus	Tropicalis was equal to Liberia and Calcaratus in
+Chr1	15853	14483	10912	1185408
+Chr2	13068	12069	9023	980388
+Chr3	10540	9993	7719	810365
+Chr4	11615	9100	7190	779683
+Chr5	12339	10444	7697	854480
+Chr6	11561	9822	7354	819502
+Chr7	9945	8032	6106	689211
+Chr8	9328	8496	6406	705174
+Chr9	7836	4836	3615	447642
+Chr10	4626	2445	2027	252212
+				
+sum	106711	89720	68049	7524065
+![image](https://github.com/TharinduTS/pop_comp_grenedalf/assets/57451846/ea4b7c16-d0de-4cec-9402-40ed8224b2b8)
+```
+
+
