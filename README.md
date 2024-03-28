@@ -527,20 +527,6 @@ when you paste data, it will be pasted in a single column. Use data to columns t
 
 example excel sheet
 '''excel
-samples used	BJE4687,ROM19161,calcaratus			
-	Tropicalis was close to Liberia in	Tropicalis was close to Calcaratus	Liberia was close to Calcaratus	Tropicalis was equal to Liberia and Calcaratus in
-Chr1	15853	14483	10912	1185408
-Chr2	13068	12069	9023	980388
-Chr3	10540	9993	7719	810365
-Chr4	11615	9100	7190	779683
-Chr5	12339	10444	7697	854480
-Chr6	11561	9822	7354	819502
-Chr7	9945	8032	6106	689211
-Chr8	9328	8496	6406	705174
-Chr9	7836	4836	3615	447642
-Chr10	4626	2445	2027	252212
-				
-sum	106711	89720	68049	7524065
 ![image](https://github.com/TharinduTS/pop_comp_grenedalf/assets/57451846/ea4b7c16-d0de-4cec-9402-40ed8224b2b8)
 ```
 
